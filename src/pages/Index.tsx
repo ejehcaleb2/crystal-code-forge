@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { ThemeProvider } from '../contexts/ThemeContext';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -17,23 +18,25 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-deep-black text-glow-white relative overflow-hidden">
-      <ParticleBackground />
-      
-      <div className={`transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-        <Navbar />
+    <ThemeProvider>
+      <div className="min-h-screen relative overflow-hidden transition-colors duration-300">
+        <ParticleBackground />
         
-        <main>
-          <Hero />
-          <About />
-          <TechStack />
-          <Projects />
-          <Contact />
-        </main>
-        
-        <Footer />
+        <div className={`transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          <Navbar />
+          
+          <main>
+            <Hero />
+            <About />
+            <TechStack />
+            <Projects />
+            <Contact />
+          </main>
+          
+          <Footer />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 

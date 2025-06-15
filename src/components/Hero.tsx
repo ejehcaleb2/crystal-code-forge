@@ -46,10 +46,10 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Main Heading */}
+        {/* Main Heading - Reduced glow */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-orbitron font-bold mb-6 animate-slide-in">
           <span className="text-glow-white">Hi, I'm </span>
-          <span className="text-crystal-blue glow-text">Caleb Ejeh</span>
+          <span className="text-crystal-blue">Caleb Ejeh</span>
         </h1>
 
         {/* Typed Subtitle */}
@@ -84,7 +84,7 @@ const Hero = () => {
         {/* Easter Egg Toggle */}
         <div className="mt-12">
           <button className="text-sm text-glow-white/50 hover:text-crystal-blue transition-colors duration-300 font-mono">
-            > Activate Developer Mode
+            &gt; Activate Developer Mode
           </button>
         </div>
       </div>

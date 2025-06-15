@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,7 +28,7 @@ const Navbar = () => {
     }`}>
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <div className="font-orbitron font-bold text-xl text-crystal-blue glow-text cursor-pointer"
+        <div className="font-orbitron font-bold text-xl text-crystal-blue cursor-pointer"
              onClick={() => scrollToSection('hero')}>
           CALEB.DEV
         </div>
@@ -51,17 +51,21 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-crystal-blue transition-all duration-300 group-hover:w-full"></span>
             </button>
           ))}
+          <ThemeToggle />
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden flex flex-col space-y-1 p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <span className={`w-6 h-0.5 bg-crystal-blue transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-          <span className={`w-6 h-0.5 bg-crystal-blue transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`w-6 h-0.5 bg-crystal-blue transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
-        </button>
+        <div className="md:hidden flex items-center space-x-4">
+          <ThemeToggle />
+          <button 
+            className="flex flex-col space-y-1 p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <span className={`w-6 h-0.5 bg-crystal-blue transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-crystal-blue transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-crystal-blue transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+          </button>
+        </div>
 
         {/* Mobile Menu */}
         <div className={`absolute top-full left-0 w-full glass-strong md:hidden transition-all duration-300 ${

@@ -37,6 +37,32 @@
 
     --radius: 0.5rem;
   }
+
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 210 100% 3%;
+
+    --card: 210 40% 95% / 0.6;
+    --card-foreground: 210 100% 3%;
+
+    --popover: 210 40% 95%;
+    --popover-foreground: 210 100% 3%;
+
+    --primary: 180 100% 40%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 280 60% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 85%;
+    --muted-foreground: 210 50% 30%;
+
+    --accent: 170 100% 40%;
+    --accent-foreground: 210 40% 98%;
+
+    --border: 210 50% 80% / 0.3;
+    --input: 210 50% 80% / 0.5;
+  }
 }
 
 @layer base {
@@ -45,12 +71,26 @@
   }
 
   body {
-    @apply bg-deep-black text-glow-white font-inter;
+    @apply font-inter transition-colors duration-300;
+    overflow-x: hidden;
+  }
+
+  /* Dark mode styles */
+  body:not(.light) {
+    @apply bg-deep-black text-glow-white;
     background: 
       radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
       #0d0d0d;
-    overflow-x: hidden;
+  }
+
+  /* Light mode styles */
+  .light body {
+    @apply bg-white text-gray-900;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.05) 0%, transparent 50%),
+      #ffffff;
   }
 
   /* Glassmorphism utility */
@@ -60,25 +100,49 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
+  .light .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
   .glass-strong {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  /* Glow effects */
+  .light .glass-strong {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  /* Reduced glow effects */
   .glow-text {
-    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    text-shadow: 0 0 5px currentColor;
+  }
+
+  .light .glow-text {
+    text-shadow: none;
   }
 
   .glow-border {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  }
+
+  .light .glow-border {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
   }
 
   .glow-hover:hover {
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), inset 0 0 30px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
     transform: translateY(-2px);
     transition: all 0.3s ease;
+  }
+
+  .light .glow-hover:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
   }
 
   /* Particle background */
@@ -99,6 +163,10 @@
 
   ::-webkit-scrollbar-track {
     background: rgba(13, 13, 13, 0.5);
+  }
+
+  .light ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.5);
   }
 
   ::-webkit-scrollbar-thumb {
